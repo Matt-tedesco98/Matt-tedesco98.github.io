@@ -2,6 +2,19 @@ html {
     scroll-behavior: smooth;
 }
 
+html, body {
+    height: 100%;
+}
+
+:root {
+    --spacing-1: 8px;
+    --spacing-2: 12px;
+    --spacing-3: 16px;
+    --spacing-4: 24px;
+    --border-radius: 12px;
+    --font-color: #323232;
+}
+
 body {
     background-color: #F2EBE3;
     font-family: "JetBrains Mono", monospace;
@@ -24,8 +37,11 @@ nav {
     list-style-type: none;
     padding: 0;
     align-items: center;
-    margin: 0;
-    margin-left: auto;
+    margin: 0 0 0 auto;
+}
+
+.navigation-item {
+    margin: var(--spacing-1);
 }
 
 a {
@@ -35,23 +51,43 @@ a {
     font-weight: 600;
 }
 
+section {
+    padding: var(16px), 0;
+}
+
 .about-me-container {
     display: flex;
 }
 
 .about-me-text {
-    margin-right: 600px;
+    margin-right: auto;
 }
 
 .portrait {
     width: 300px;
-    height: 300px;
+    height: 400px;
     border-color: black;
     border-radius: 6px;
-    flex-shrink: 5;
+    flex-shrink: 0;
     object-fit: cover;
 }
 
+.project-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: decimal;
+}
+
 .skill-images {
+    display: flex;
     font-size: 75px;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.info {
+    margin-top: auto;
+    padding: var(--spacing-2) 0;
+    text-align: center;
 }

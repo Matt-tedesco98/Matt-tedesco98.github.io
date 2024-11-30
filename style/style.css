@@ -73,10 +73,27 @@ section {
 }
 
 .project-items {
+    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     list-style-type: decimal;
+}
+
+.project-item:hover {
+    background-color: #ececec;
+}
+
+.dropdown-content {
+    display: none;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.project-item.active .dropdown-content {
+    display: block;
 }
 
 .skill-images {

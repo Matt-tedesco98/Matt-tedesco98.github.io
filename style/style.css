@@ -1,3 +1,57 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #F2EBE3;
+    font-family: "JetBrains Mono", monospace;
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+}
+
+.navigation-items {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+    margin-left: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.about-me-container {
+    display: flex;
+}
+
+.about-me-text {
+    margin-right: 600px;
+}
+
+.portrait {
+    width: 300px;
+    height: 300px;
+    border-color: black;
+    border-radius: 6px;
+    flex-shrink: 5;
+    object-fit: cover;
+}
+
+.skill-images {
+    font-size: 75px;
 }

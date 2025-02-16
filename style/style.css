@@ -115,3 +115,56 @@ section {
     text-align: center;
 }
 
+
+@media (max-width: 320px) {
+    body {
+        max-width: 320px;
+        margin: 0;
+    }
+
+    nav {
+        font-size: small;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navigation-items {
+        flex-direction: row;
+        align-items: flex-start;
+        margin: 10px 0;
+    }
+
+    .navigation-item {
+        margin-bottom: var(--spacing-2);
+    }
+
+    .navigation-item a {
+        margin: 0;
+        text-align: left;
+    }
+
+    .about-me-container {
+        flex-direction: column;
+    }
+
+    .portrait {
+        width: 100%;
+        height: auto;
+        margin-bottom: var(--spacing-3);
+    }
+
+    .project-items {
+        padding: var(--spacing-2);
+    }
+
+    .project-content {
+        flex-direction: column;
+        gap: var(--spacing-2);
+    }
+
+    .skill-images {
+        flex-direction: row;
+        font-size: 50px;
+        align-items: center;
+    }
+}

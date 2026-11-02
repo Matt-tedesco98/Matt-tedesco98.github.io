@@ -346,6 +346,7 @@ section { padding: var(--space-6) 0 0; }
     font-weight: 600;
     color: var(--accent);
 }
+.certs-more { margin: var(--space-3) 0 0; font-size: 0.9rem; font-weight: 600; }
 .cert-link:hover .cert-verify { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Contact ---------- */

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ControllerPlayground · Matt Tedesco</title>
+    <meta name="description" content="Case study: a controller-first Windows gaming shell built with C#, WinUI 3, a native C++ GameInput layer, and Steam integration.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ControllerPlayground · Matt Tedesco">
+    <meta property="og:description" content="A controller-first Windows gaming shell built with C#, WinUI 3 and a native C++ input layer.">
+    <meta property="og:url" content="https://matt-tedesco98.github.io/projects/controllerplayground.html">
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../main.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="nav" aria-label="Main">
+            <a class="logo" href="../">Matt Tedesco</a>
+            <ul class="nav-links">
+                <li><a href="../#about">About</a></li>
+                <li><a href="../#projects">Projects</a></li>
+                <li><a href="../#skills">Skills</a></li>
+                <li><a href="../#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="case-study">
+        <p class="breadcrumb"><a href="../#projects">&larr; All projects</a></p>
+
+        <header class="case-header">
+            <p class="eyebrow">Case study</p>
+            <h1>ControllerPlayground</h1>
+            <p class="lede">A controller-first Windows gaming shell, built for the couch, with C#, WinUI 3 and a
+                native C++ input layer.</p>
+            <ul class="stack" aria-label="Tech stack">
+                <li>C#</li><li>.NET 8</li><li>WinUI 3</li><li>C++</li><li>Microsoft GameInput</li>
+                <li>SteamKit2</li><li>Steam Web API</li><li>XAML</li>
+            </ul>
+            <div class="project-links">
+                <a class="button" href="https://github.com/Matt-tedesco98/ControllerPlayground">View code on GitHub</a>
+            </div>
+        </header>
+
+        <!-- TODO: add a 60–90 second demo here once recorded, e.g.
+        <figure class="demo">
+            <video src="../media/controllerplayground-demo.mp4" controls muted playsinline
+                   poster="../media/controllerplayground-poster.webp"></video>
+            <figcaption>Navigating the library, Guide menu and Steam chat with an Xbox and a DualSense controller.</figcaption>
+        </figure>
+        -->
+
+        <section aria-labelledby="problem">
+            <h2 id="problem">The problem</h2>
+            <p>A PC is a great gaming machine, but Windows still assumes a desk, a mouse and a keyboard. Plug a
+                PC into a TV and pick up a controller, and you quickly hit screens you can't navigate, text
+                boxes you can't type in, and launchers that each work differently.</p>
+            <p>ControllerPlayground explores what a Windows gaming interface looks like when it's designed for
+                a controller first: console-style navigation, a game library, friends and chat, and overlays,
+                all reachable without touching a mouse.</p>
+        </section>
+
+        <section aria-labelledby="architecture">
+            <h2 id="architecture">Architecture</h2>
+            <p>The app is split into layers so each one has a single job. Raw controller input is captured in
+                native code, normalized per device in C#, and routed by the shell to whichever screen or
+                overlay currently owns input. The on-screen keyboard runs as its own process and talks to the
+                shell over a local pipe.</p>
+
+            <figure class="diagram">
+                <svg viewBox="0 0 720 430" role="img" aria-labelledby="arch-title arch-desc">
+                    <title id="arch-title">ControllerPlayground architecture</title>
+                    <desc id="arch-desc">Microsoft GameInput feeds a native C++ DLL, which feeds the managed C#
+                        input service, which feeds the WinUI 3 shell. The shell exchanges messages with a separate
+                        KeyboardHost process over an authenticated pipe, and uses Steam services for sign-in,
+                        friends, chat and news.</desc>
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" class="diagram-arrowhead"/>
+                        </marker>
+                    </defs>
+
+                    <!-- left column: input pipeline -->
+                    <g class="diagram-box">
+                        <rect x="20" y="20" width="300" height="64" rx="10"/>
+                        <text x="170" y="47" class="diagram-title">Microsoft GameInput</text>
+                        <text x="170" y="68" class="diagram-sub">Xbox + DualSense hardware</text>
+                    </g>
+                    <g class="diagram-box diagram-accent">
+                        <rect x="20" y="124" width="300" height="64" rx="10"/>
+                        <text x="170" y="151" class="diagram-title">ControllerInput.dll (C++)</text>
+                        <text x="170" y="172" class="diagram-sub">Per-device capture · versioned C ABI</text>
+                    </g>
+                    <g class="diagram-box">
+                        <rect x="20" y="228" width="300" height="64" rx="10"/>
+                        <text x="170" y="255" class="diagram-title">Input service (C#)</text>
+                        <text x="170" y="276" class="diagram-sub">Normalize · repeats · neutral gating</text>
+                    </g>
+                    <g class="diagram-box diagram-accent">
+                        <rect x="20" y="332" width="300" height="76" rx="10"/>
+                        <text x="170" y="361" class="diagram-title">WinUI 3 shell</text>
+                        <text x="170" y="382" class="diagram-sub">Routing · modal ownership · focus</text>
+                        <text x="170" y="399" class="diagram-sub">Home, library, Guide, friends, chat</text>
+                    </g>
+
+                    <line x1="170" y1="84" x2="170" y2="122" class="diagram-line" marker-end="url(#arrow)"/>
+                    <line x1="170" y1="188" x2="170" y2="226" class="diagram-line" marker-end="url(#arrow)"/>
+                    <line x1="170" y1="292" x2="170" y2="330" class="diagram-line" marker-end="url(#arrow)"/>
+                    <text x="180" y="108" class="diagram-label" text-anchor="start">native</text>
+                    <text x="180" y="212" class="diagram-label" text-anchor="start">P/Invoke</text>
+
+                    <!-- right column -->
+                    <g class="diagram-box">
+                        <rect x="420" y="124" width="280" height="64" rx="10"/>
+                        <text x="560" y="151" class="diagram-title">KeyboardHost process</text>
+                        <text x="560" y="172" class="diagram-sub">Controller-native on-screen keyboard</text>
+                    </g>
+                    <g class="diagram-box">
+                        <rect x="420" y="332" width="280" height="76" rx="10"/>
+                        <text x="560" y="361" class="diagram-title">Steam services</text>
+                        <text x="560" y="382" class="diagram-sub">SteamKit2 · local VDF data</text>
+                        <text x="560" y="399" class="diagram-sub">Steam Web API</text>
+                    </g>
+
+                    <path d="M320,360 C380,360 380,170 418,160" class="diagram-line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                    <text x="404" y="250" class="diagram-label" text-anchor="start">authenticated</text>
+                    <text x="404" y="266" class="diagram-label" text-anchor="start">pipe (v2)</text>
+                    <line x1="322" y1="380" x2="418" y2="380" class="diagram-line" marker-end="url(#arrow)"/>
+                </svg>
+            </figure>
+        </section>
+
+        <section aria-labelledby="problems">
+            <h2 id="problems">Hard problems I solved</h2>
+
+            <article class="problem">
+                <h3>1. A stable boundary between C++ and C#</h3>
+                <p>I chose Microsoft GameInput mainly for its DualSense support. It's a C++ API, so I wrote a
+                    small native DLL over it and call that from C#. The risk with native interop is
+                    that both sides must agree on memory layout exactly, or you get corrupted input with no error.</p>
+                <p>Every struct that crosses the boundary uses fixed 8-byte packing, and the C++ side
+                    <code>static_assert</code>s each size (for example, a device snapshot is exactly 144 bytes), so a
+                    layout mistake fails the build instead of failing at runtime. When I added multi-controller
+                    support, I added a v2 API alongside the original one rather than changing it, so existing callers
+                    kept working.</p>
+            </article>
+
+            <article class="problem">
+                <h3>2. Two controllers, one interface</h3>
+                <p>With an Xbox controller and a DualSense connected at once, the question becomes: who is in
+                    charge? If player two can press a button inside player one's menu, the UI breaks in confusing ways.</p>
+                <p>Each device gets a full identity from GameInput instead of a guess from vendor and product IDs.
+                    Either controller can navigate the home screen, but whoever opens a menu owns it, and input from
+                    the other controller is discarded rather than queued for later. Sticks and buttons have to return
+                    to neutral before a different controller can take over, which prevents a held button from
+                    "leaking" into the next screen. Disconnecting a controller revokes its ownership.</p>
+            </article>
+
+            <article class="problem">
+                <h3>3. An on-screen keyboard in its own process</h3>
+                <p>Typing with a controller needs an on-screen keyboard, and I wanted it isolated from the main
+                    shell. That means the two processes have to coordinate input safely across a process boundary.</p>
+                <p>The keyboard and shell talk over a local named pipe with a versioned protocol. The shell
+                    checks the connecting process before trusting it, every message has a size limit, and each
+                    keyboard action must be authorized by the shell with a short-lived, one-time ticket. Stale or
+                    duplicate commands are rejected instead of retried, and the keyboard always types for the
+                    controller that opened it.</p>
+            </article>
+
+            <article class="problem">
+                <h3>4. Real Steam integration</h3>
+                <p>The shell signs in to Steam by QR code through SteamKit2 and stores the refresh token in the
+                    Windows Password Vault, so users don't sign in every launch. It reconnects automatically, loads
+                    friends and chat, and finds the local Steam install through the registry to parse Steam's own
+                    VDF config files. Game pages pull news from the Steam Web API.</p>
+            </article>
+        </section>
+
+        <section aria-labelledby="testing">
+            <h2 id="testing">How I verify it</h2>
+            <ul class="facts">
+                <li><strong>109</strong> automated test groups pass in both Debug and Release builds</li>
+                <li><strong>28</strong> protocol and session test groups also pass with JSON reflection disabled</li>
+                <li>End-to-end hardware checks with Xbox and DualSense controllers across home, library, game
+                    pages, Guide, friends, chat and the keyboard, including launching and returning from a real game</li>
+            </ul>
+            <p>Each milestone has a written acceptance record in the repo that lists exactly what was tested and
+                what wasn't.</p>
+        </section>
+
+        <section aria-labelledby="limits">
+            <h2 id="limits">Known limitations</h2>
+            <ul>
+                <li>Steam Input's Desktop Layout can inject its own keyboard and mouse events alongside GameInput; it
+                    has to be disabled for now.</li>
+                <li>Windows packaging, installation and upgrades haven't been validated yet.</li>
+                <li>Only x64 is supported, and Steam Controller support is planned for a later milestone.</li>
+            </ul>
+            <!-- TODO: add a short "What I learned" section here, in your own words. -->
+        </section>
+
+        <p class="case-footer-links">
+            <a class="button" href="https://github.com/Matt-tedesco98/ControllerPlayground">View code on GitHub</a>
+            <a class="button button-ghost" href="../#projects">Back to all projects</a>
+        </p>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> Matthew Tedesco</p>
+        <p>Last updated <time id="last-updated">recently</time></p>
+    </footer>
+</body>
+</html>

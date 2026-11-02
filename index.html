@@ -1,112 +1,126 @@
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="StyleSheet" href="/style/style.css">
-<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
-<link href='https://fonts.googleapis.com/css? family=JetBrains Mono' rel='stylesheet'>
-<script src="main.js"></script>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Matt Tedesco Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matt Tedesco · Software Engineer</title>
+    <meta name="description" content="Matt Tedesco is a self-taught software engineer building full-stack web apps and controller-first Windows software in C#, C++, React, Node.js and PostgreSQL.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matt Tedesco · Software Engineer">
+    <meta property="og:description" content="Full-stack web apps and controller-first Windows software in C#, C++, React, Node.js and PostgreSQL.">
+    <meta property="og:url" content="https://matt-tedesco98.github.io/">
+    <meta property="og:image" content="https://matt-tedesco98.github.io/images/portrait.webp">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.18.0/devicon.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="main.js" defer></script>
 </head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-    <h1 id="logo-name">Matt Tedesco</h1>
-    <ul class="navigation-items">
-        <li class="navigation-item"><a href="index.html">Home</a></li>
-        <li class="navigation-item"><a href="#about-me">About Me</a></li>
-        <li class="navigation-item"><a href="contact.html">Contact</a></li>
-        <li class="navigation-item"><a href="#skills"> Skills</a></li>
-    </ul>
-</nav>
-
-<main>
-    <section id="about-me">
-        <div class="about-me-container">
-            <div class="about-me-text">
-                <h2>About Me</h2>
-                <p>Hi, I’m Matt Tedesco, a passionate developer with a lifelong knack for problem-solving. My
-                    journey with technology began early—at just 4 years old, I built my first computer. This experience
-                    ignited my curiosity and taught me the value of tackling challenges head-on, a mindset I carry into
-                    every project today.</p>
-                <p>With hands-on expertise across macOS, Windows, and Linux, I bring a versatile approach to
-                    development. Whether it’s designing intuitive front-end experiences or crafting robust back-end
-                    systems, I thrive on finding creative solutions to complex problems.</p>
-                <p>Currently, I’m sharpening my Python and Java skills through Codecademy’s interview prep courses,
-                    adding to my foundation in full-stack development. When I’m not coding, you’ll find me experimenting
-                    with home server setups or exploring ways to simplify everyday tasks through technology.</p>
-                <p>Let’s connect and create something amazing together!</p>
-            </div>
-            <img src="Images/IMG_4769.PNG" alt="Matt Tedesco" class="portrait">
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="projects">
-            <h2>Some Projects I have made</h2>
-            <ul class="project-items">
-                <li class="project-item">
-                    <h3>Project 1</h3>
-                    <div class="project-content">
-                        <a href="https://github.com/Matt-tedesco98/python-food-recommendation-software"><img src="/Images/Screenshot%202025-01-13%20191603.png" class="project-img" alt=""></a>
-                        <p class="project-description">The Python Food Recommendation Software is an interactive system
-                            designed to provide personalized meal suggestions based on user preferences. This project
-                            leverages a LinkedList data structure to efficiently store and manage dynamic user inputs,
-                            ensuring fast and relevant recommendations. It showcases my expertise in data structures,
-                            algorithm design, and Python development, demonstrating how structured data management can
-                            enhance user-centric applications.</p>
-                    </div>
-                </li>
-                <li class="project-item">
-                    <h3>Project 2</h3>
-                    <div class="project-content">
-                        <a href="https://github.com/Matt-tedesco98/Python-CPU-Simulator"><img src="/Images/Screenshot%202025-01-13%20192742.png" class="project-img" alt=""></a>
-                        <p class="project-description">The Python CPU Simulator is a lightweight simulation tool that
-                            replicates the core functionality of a CPU, including instruction fetching, decoding, and
-                            execution. Designed to demonstrate fundamental concepts of computer architecture, this
-                            project showcases my ability to build low-level system simulations using Python. It
-                            highlights my skills in algorithm design, state management, and efficient process handling,
-                            offering an in-depth understanding of how modern processors operate.</p>
-                    </div>
-                </li>
-                <li class="project-item">
-                    <h3>Project 3</h3>
-                    <div class="project-content">
-                        <a href="https://github.com/Matt-tedesco98/profiles-in-cpp" ><img src="/Images/Screenshot%202025-01-13%20201548.png" class="project-img" alt=""></a>
-                        <p class="project-description">The Profiles in C++ project is a user profile management system
-                            built with C++, demonstrating core object-oriented programming principles such as
-                            encapsulation, inheritance, and polymorphism. This project showcases my ability to design
-                            robust, efficient C++ applications with a focus on managing data structures, user
-                            interactions, and memory management. It highlights my expertise in applying modern C++
-                            practices to solve real-world problems.</p>
-                    </div>
-                </li>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main">
+            <a class="logo" href="./">Matt Tedesco</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <section id="skills">
-        <div class="skills">
-            <h2>Skills</h2>
-            <div class="skill-images">
-                <i class="devicon-python-plain-wordmark"></i>
-                <i class="devicon-c-plain-wordmark"></i>
-                <i class="devicon-cplusplus-plain"></i>
-                <i class="devicon-java-plain-wordmark"></i>
-                <i class="devicon-kotlin-plain-wordmark"></i>
-                <i class="devicon-git-plain"></i>
-                <i class="devicon-github-original"></i>
-                <i class="devicon-html5-plain-wordmark"></i>
-                <i class="devicon-css3-plain-wordmark"></i>
+    <main id="main">
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="about-text">
+                <p class="eyebrow">Software engineer</p>
+                <h1 id="about-heading">Hi, I'm Matt. I build full-stack web apps and controller-first Windows software.</h1>
+                <p>I'm a self-taught developer who learns by building. My biggest project right now is
+                    <a href="projects/controllerplayground.html">ControllerPlayground</a>, a Windows gaming
+                    shell designed for the couch: a WinUI 3 app in C# sitting on top of a native C++ input
+                    layer I wrote over Microsoft GameInput.</p>
+                <p>On the web side I build with React, Node.js, Express and PostgreSQL, from REST APIs with
+                    authentication to a full e-commerce flow with Stripe payments. I've completed Codecademy's
+                    Computer Science career path and am finishing the Full-Stack Engineer path.</p>
+                <p>Away from the editor, I'm usually playing games or tinkering with home server setups.</p>
+                <div class="about-links">
+                    <a class="button" href="#projects">See my work</a>
+                    <a class="button button-ghost" href="https://github.com/Matt-tedesco98">GitHub</a>
+                </div>
             </div>
-        </div>
-    </section>
+            <img class="portrait" src="images/portrait.webp" width="600" height="800"
+                 alt="Portrait of Matt Tedesco">
+        </section>
 
-</main>
-<footer>
-    <div class="info">
-        <p>2024</p>
-        <p>Matthew Tedesco</p>
-        <p>Updated as of ______</p>
-    </div>
-</footer>
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projects</h2>
+            <div id="project-filters" class="filters" role="group" aria-label="Filter projects" hidden></div>
+            <p id="project-count" class="visually-hidden" aria-live="polite"></p>
+            <div id="project-grid" class="project-grid">
+                <p class="projects-fallback">
+                    Projects are loading. You can also browse them all on
+                    <a href="https://github.com/Matt-tedesco98?tab=repositories">my GitHub</a>.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills</h2>
+            <div class="skill-groups">
+                <div class="skill-group">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li><i class="devicon-csharp-plain" aria-hidden="true"></i>C#</li>
+                        <li><i class="devicon-cplusplus-plain" aria-hidden="true"></i>C++</li>
+                        <li><i class="devicon-javascript-plain" aria-hidden="true"></i>JavaScript</li>
+                        <li><i class="devicon-python-plain" aria-hidden="true"></i>Python</li>
+                        <li><i class="devicon-postgresql-plain" aria-hidden="true"></i>SQL</li>
+                        <li><i class="devicon-html5-plain" aria-hidden="true"></i>HTML &amp; CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Frameworks &amp; platforms</h3>
+                    <ul class="skill-list">
+                        <li><i class="devicon-dotnetcore-plain" aria-hidden="true"></i>.NET / WinUI 3</li>
+                        <li><i class="devicon-react-original" aria-hidden="true"></i>React &amp; Redux</li>
+                        <li><i class="devicon-nodejs-plain" aria-hidden="true"></i>Node.js</li>
+                        <li><i class="devicon-express-original" aria-hidden="true"></i>Express</li>
+                        <li><i class="devicon-postgresql-plain" aria-hidden="true"></i>PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Tools</h3>
+                    <ul class="skill-list">
+                        <li><i class="devicon-git-plain" aria-hidden="true"></i>Git</li>
+                        <li><i class="devicon-github-original" aria-hidden="true"></i>GitHub</li>
+                        <li><i class="devicon-windows11-original" aria-hidden="true"></i>Windows APIs</li>
+                        <li><i class="devicon-jest-plain" aria-hidden="true"></i>Jest &amp; RTL</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact</h2>
+            <p>I'm looking for software engineering roles. If you'd like to talk, reach out.</p>
+            <ul class="contact-links">
+                <!-- TODO before merging: add your email and LinkedIn URL, e.g.
+                <li><a href="mailto:you@example.com">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/your-handle/"><i class="devicon-linkedin-plain" aria-hidden="true"></i>LinkedIn</a></li>
+                -->
+                <li><a href="https://github.com/Matt-tedesco98"><i class="devicon-github-original" aria-hidden="true"></i>GitHub</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> Matthew Tedesco</p>
+        <p>Last updated <time id="last-updated">recently</time></p>
+    </footer>
+</body>
 </html>

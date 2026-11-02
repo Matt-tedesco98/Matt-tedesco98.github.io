@@ -1,0 +1,110 @@
+{
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "desktop", "label": "Desktop & Native" },
+    { "id": "fullstack", "label": "Full-Stack" },
+    { "id": "frontend", "label": "Front-End" },
+    { "id": "backend", "label": "Back-End" },
+    { "id": "earlier", "label": "Earlier Work" }
+  ],
+  "projects": [
+    {
+      "id": "controllerplayground",
+      "title": "ControllerPlayground",
+      "featured": true,
+      "categories": ["desktop"],
+      "summary": "A controller-first Windows gaming shell, built for the couch, with C#, WinUI 3 and a native C++ input layer.",
+      "highlights": [
+        "Native C++ DLL over Microsoft GameInput with a fixed-layout, versioned ABI consumed from C#",
+        "Multiple Xbox and DualSense controllers with per-device identity and modal ownership",
+        "On-screen keyboard runs as a separate process over an authenticated, versioned pipe protocol",
+        "Steam sign-in by QR code, friends and chat via SteamKit2, plus local Steam data parsing"
+      ],
+      "stack": ["C#", ".NET 8", "WinUI 3", "C++", "GameInput", "SteamKit2"],
+      "repo": "Matt-tedesco98/ControllerPlayground",
+      "caseStudy": "projects/controllerplayground.html"
+    },
+    {
+      "id": "ecommerce-app",
+      "title": "E-Commerce Web App",
+      "categories": ["fullstack", "frontend", "backend"],
+      "summary": "Full shopping flow from browsing to payment: product catalog, persistent carts, checkout with Stripe, and order history.",
+      "highlights": [
+        "Stripe Payment Intents with server-side cart totals",
+        "Session auth with Passport: local, Google and Facebook OAuth",
+        "React Router pages with Context and Redux Toolkit state"
+      ],
+      "stack": ["React", "Redux Toolkit", "Express", "PostgreSQL", "Passport", "Stripe"],
+      "repo": "Matt-tedesco98/E-Commerce-App-Client-"
+    },
+    {
+      "id": "ecommerce-api",
+      "title": "E-Commerce REST API",
+      "categories": ["backend"],
+      "summary": "REST API for users, products, carts, checkout and orders, with layered routes, controllers and models.",
+      "highlights": [
+        "Password hashing with bcrypt and JWT support",
+        "Cart-to-checkout-to-order workflow backed by PostgreSQL",
+        "Interactive Swagger / OpenAPI documentation"
+      ],
+      "stack": ["Node.js", "Express", "PostgreSQL", "JWT", "Swagger"],
+      "repo": "Matt-tedesco98/E-commerce-App-REST-API"
+    },
+    {
+      "id": "jammming",
+      "title": "Jammming",
+      "categories": ["frontend"],
+      "summary": "Search Spotify, build a playlist in the browser, and save it straight to your Spotify account.",
+      "highlights": [
+        "Spotify Web API integration isolated in its own service module",
+        "OAuth sign-in flow",
+        "Tests for API behavior and UI interactions"
+      ],
+      "stack": ["React", "Spotify Web API", "OAuth", "Jest", "React Testing Library"],
+      "repo": "Matt-tedesco98/Jammming"
+    },
+    {
+      "id": "reddit-client",
+      "title": "Reddit Client",
+      "categories": ["frontend"],
+      "summary": "Browse subreddits, posts and comments through Reddit's public JSON endpoints.",
+      "highlights": [
+        "Async data loading with Redux Toolkit",
+        "Skeleton loading and explicit error states",
+        "Markdown rendering and animated transitions"
+      ],
+      "stack": ["React", "Redux Toolkit", "Framer Motion"],
+      "repo": "Matt-tedesco98/reddit-client-app"
+    },
+    {
+      "id": "cpu-simulator",
+      "title": "Python CPU Simulator",
+      "categories": ["earlier"],
+      "summary": "A small CPU simulation with registers, a program counter, a memory bus and a toggleable cache layer.",
+      "highlights": [
+        "Parses and executes ADD, ADDI, J and CACHE instructions from a file",
+        "Processor, memory and cache split into separate modules"
+      ],
+      "stack": ["Python"],
+      "repo": "Matt-tedesco98/Python-CPU-Simulator"
+    },
+    {
+      "id": "food-recommender",
+      "title": "Restaurant Recommender",
+      "categories": ["earlier"],
+      "summary": "A command-line restaurant recommender built on a hand-written linked list.",
+      "highlights": [],
+      "stack": ["Python"],
+      "repo": "Matt-tedesco98/python-food-recommendation-software"
+    },
+    {
+      "id": "profiles-cpp",
+      "title": "Profiles in C++",
+      "categories": ["earlier"],
+      "summary": "A small matchmaking-profile exercise in C++ classes with separate headers and a CMake build.",
+      "highlights": [],
+      "stack": ["C++", "CMake"],
+      "repo": "Matt-tedesco98/profiles-in-cpp"
+    }
+  ]
+}

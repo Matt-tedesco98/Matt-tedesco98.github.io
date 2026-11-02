@@ -124,7 +124,39 @@ async function renderProjects() {
     applyFilter("all", grid, buttons);
 }
 
+/** Light/dark toggle. Follows the system setting until the visitor picks one. */
+function setupThemeToggle() {
+    const button = document.getElementById("theme-toggle");
+    if (!button) return;
+
+    const root = document.documentElement;
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const currentTheme = () => root.dataset.theme || (systemDark.matches ? "dark" : "light");
+
+    const sync = () => {
+        const current = currentTheme();
+        const next = current === "dark" ? "light" : "dark";
+        button.dataset.current = current;
+        button.setAttribute("aria-label", `Switch to ${next} mode`);
+        button.title = `Switch to ${next} mode`;
+    };
+
+    button.addEventListener("click", () => {
+        const next = currentTheme() === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
+        sync();
+    });
+
+    // If the visitor hasn't chosen, keep the icon in step with system changes.
+    systemDark.addEventListener("change", sync);
+
+    sync();
+    button.hidden = false;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    setupThemeToggle();
     const year = document.getElementById("year");
     if (year) year.textContent = new Date().getFullYear();
 

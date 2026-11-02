@@ -19,10 +19,26 @@
     --space-6: 72px;
     --max-width: 1080px;
     --font: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light;
+}
+
+/* Dark palette: used when the visitor picks dark, or when their system is
+   dark and they haven't picked light. Keep both blocks in sync. */
+:root[data-theme="dark"] {
+    --bg: #1b1916;
+    --surface: #24211d;
+    --text: #ece6de;
+    --muted: #aea398;
+    --border: #3a352f;
+    --accent: #f08a68;
+    --accent-ink: #1b1916;
+    --accent-soft: #3d2a22;
+    --focus: #8ab4ff;
+    color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --bg: #1b1916;
         --surface: #24211d;
         --text: #ece6de;
@@ -32,6 +48,7 @@
         --accent-ink: #1b1916;
         --accent-soft: #3d2a22;
         --focus: #8ab4ff;
+        color-scheme: dark;
     }
 }
 
@@ -155,6 +172,29 @@ img { max-width: 100%; height: auto; }
 }
 .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; }
 .nav-links a:hover { color: var(--accent); }
+
+.nav-right { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+/* Show the icon for the theme you'd switch TO. */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle[data-current="dark"] .icon-sun { display: block; }
+.theme-toggle[data-current="dark"] .icon-moon { display: none; }
 
 /* ---------- Sections ---------- */
 section { padding: var(--space-6) 0 0; }
